@@ -12,7 +12,7 @@ public interface LoanRepository extends JpaRepository<Loan, Long> {
     @Query("select l from Loan l where upper(l.manager.username) = upper(:username)")
     List<Loan> findLoanByManager(@Param("username") String username);
 
-    @Query("select l from Loan l where l.id = :id and l.manager.name = :name")
+    @Query("select l from Loan l where l.id = :id and upper(l.manager.username) = upper(:name)")
     Optional<Loan> findByIdAndManager(@Param("id") Long id, @Param("name") String name);
 
 }
