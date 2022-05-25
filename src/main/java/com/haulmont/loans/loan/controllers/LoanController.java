@@ -24,15 +24,15 @@ class LoanController {
         this.loanMapper = loanMapper;
     }
 
-    @GetMapping("/find")
+    @GetMapping("/all")
     public List<LoanDto> findAll() {
         return loanService.findAll().stream()
                 .map(loanMapper::loanToLoanDto).collect(Collectors.toList());
     }
 
-    @PostMapping(path = {"/status"})
-    public LoanDto updateStatus(@RequestBody @Valid LoanDto loanDto) {
-        Loan loan = loanService.findById(loanDto.getId()).orElseThrow(EntityNotFoundException::new);
+    @PostMapping(path = {"/{id}"})
+    public LoanDto updateStatus(@PathVariable Long id, @RequestBody @Valid LoanDto loanDto) {
+        Loan loan = loanService.findById(id).orElseThrow(EntityNotFoundException::new);
         loanMapper.updateLoanFromLoanDto(loanDto, loan);
         return loanMapper.loanToLoanDto(loanService.save(loan));
     }

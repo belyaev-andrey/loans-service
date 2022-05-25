@@ -26,7 +26,7 @@
         </insert>
         <insert tableName="loan">
             <column name="amount" valueNumeric="100"/>
-            <column name="loan_status" value="1"/>
+            <column name="loan_status" value="0"/>
             <column name="client_id" valueNumeric="1"/>
             <column name="manager_id" valueNumeric="1"/>
         </insert>
