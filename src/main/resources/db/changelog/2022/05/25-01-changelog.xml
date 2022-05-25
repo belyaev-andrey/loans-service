@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.9.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1653458975638-1" author="andrey.belyaev (generated)">
+        <createTable tableName="client">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_client"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="rating" type="INT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1653458975638-2" author="andrey.belyaev (generated)">
+        <createTable tableName="loan">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_loan"/>
+            </column>
+            <column name="client_id" type="BIGINT"/>
+            <column name="manager_id" type="BIGINT"/>
+            <column name="amount" type="DECIMAL(19, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="loan_status" type="int">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1653458975638-3" author="andrey.belyaev (generated)">
+        <createTable tableName="manager">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_manager"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="salary" type="DECIMAL(19, 2)"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1653458975638-4" author="andrey.belyaev (generated)">
+        <addUniqueConstraint columnNames="email" constraintName="uc_client_email" tableName="client"/>
+    </changeSet>
+    <changeSet id="1653458975638-5" author="andrey.belyaev (generated)">
+        <addForeignKeyConstraint baseColumnNames="client_id" baseTableName="loan" constraintName="FK_LOAN_ON_CLIENT"
+                                 referencedColumnNames="id" referencedTableName="client"/>
+    </changeSet>
+    <changeSet id="1653458975638-6" author="andrey.belyaev (generated)">
+        <addForeignKeyConstraint baseColumnNames="manager_id" baseTableName="loan" constraintName="FK_LOAN_ON_MANAGER"
+                                 referencedColumnNames="id" referencedTableName="manager"/>
+    </changeSet>
+
+</databaseChangeLog>

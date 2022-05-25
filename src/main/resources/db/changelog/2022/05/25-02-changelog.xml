@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.9.xsd">
+
+    <changeSet id="1653459015111-1" author="andrey.belyaev">
+        <insert tableName="manager">
+            <column name="name" value="John Black"/>
+            <column name="salary" valueNumeric="1000"/>
+        </insert>
+        <insert tableName="manager">
+            <column name="name" value="Sarah White"/>
+            <column name="salary" valueNumeric="1200"/>
+        </insert>
+        <insert tableName="client">
+            <column name="name" value="Donald Duck"/>
+            <column name="email" value="dd@mail.com"/>
+            <column name="rating" valueNumeric="5"/>
+        </insert>
+        <insert tableName="client">
+            <column name="name" value="Mickey Mouse"/>
+            <column name="email" value="mm@mail.com"/>
+            <column name="rating" valueNumeric="1"/>
+        </insert>
+        <insert tableName="loan">
+            <column name="amount" valueNumeric="100"/>
+            <column name="loan_status" value="1"/>
+            <column name="client_id" valueNumeric="1"/>
+            <column name="manager_id" valueNumeric="1"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>
