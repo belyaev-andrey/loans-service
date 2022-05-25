@@ -4,11 +4,13 @@ import com.haulmont.loans.loan.entities.Loan;
 import com.haulmont.loans.loan.entities.LoanDto;
 import com.haulmont.loans.loan.services.LoanMapper;
 import com.haulmont.loans.loan.services.LoanService;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
 import org.springframework.web.bind.annotation.*;
 
-import javax.persistence.EntityExistsException;
 import javax.persistence.EntityNotFoundException;
 import javax.validation.Valid;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -35,5 +37,11 @@ class LoanController {
         Loan loan = loanService.findById(id).orElseThrow(EntityNotFoundException::new);
         loanMapper.updateLoanFromLoanDto(loanDto, loan);
         return loanMapper.loanToLoanDto(loanService.save(loan));
+    }
+
+    @GetMapping("/{id}")
+    public LoanDto findById(@PathVariable Long id) {
+        return loanMapper.loanToLoanDto(loanService.findById(id)
+                .orElseThrow(EntityNotFoundException::new));
     }
 }

@@ -42,6 +42,7 @@
                 <constraints nullable="false" primaryKey="true" primaryKeyName="pk_manager"/>
             </column>
             <column name="name" type="VARCHAR(255)"/>
+            <column name="username" type="VARCHAR(255)"/>
             <column name="salary" type="DECIMAL(19, 2)"/>
         </createTable>
     </changeSet>

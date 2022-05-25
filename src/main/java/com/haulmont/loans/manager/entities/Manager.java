@@ -19,6 +19,17 @@ public class Manager {
     @Column(name = "salary", precision = 19, scale = 2)
     private BigDecimal salary;
 
+    @Column(name = "username", nullable = false, unique = true)
+    private String username;
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
     public BigDecimal getSalary() {
         return salary;
     }

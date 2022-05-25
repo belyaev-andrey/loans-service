@@ -9,6 +9,7 @@
         <insert tableName="manager">
             <column name="name" value="John Black"/>
             <column name="salary" valueNumeric="1000"/>
+            <column name="username" value="admin"/>
         </insert>
         <insert tableName="manager">
             <column name="name" value="Sarah White"/>

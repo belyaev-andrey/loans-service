@@ -2,6 +2,9 @@ package com.haulmont.loans.loan.services;
 
 import com.haulmont.loans.loan.entities.Loan;
 import com.haulmont.loans.loan.repositories.LoanRepository;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,9 +19,20 @@ public class LoanService {
         this.loanRepository = loanRepository;
     }
 
+    private String getAuthUsername() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication != null) {
+            OAuth2AuthenticationToken token = (OAuth2AuthenticationToken) authentication;
+            return token.getPrincipal().getAttribute("preferred_username");
+        } else {
+            return "";
+        }
+    }
+
     @Transactional(readOnly = true)
     public  List<Loan> findAll() {
-        return loanRepository.findAll();
+        String name = getAuthUsername();
+        return loanRepository.findLoanByManager(name);
     }
 
     @Transactional
@@ -28,6 +42,8 @@ public class LoanService {
 
     @Transactional(readOnly = true)
     public  Optional<Loan> findById(Long id) {
-        return loanRepository.findById(id);
+        String name = getAuthUsername();
+        return loanRepository.findByIdAndManager(id, name);
     }
+
 }
