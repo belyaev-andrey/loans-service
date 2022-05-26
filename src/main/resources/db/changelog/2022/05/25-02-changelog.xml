@@ -14,6 +14,7 @@
         <insert tableName="manager">
             <column name="name" value="Sarah White"/>
             <column name="salary" valueNumeric="1200"/>
+            <column name="username" value="user"/>
         </insert>
         <insert tableName="client">
             <column name="name" value="Donald Duck"/>
@@ -25,10 +26,39 @@
             <column name="email" value="mm@mail.com"/>
             <column name="rating" valueNumeric="1"/>
         </insert>
+        <insert tableName="client">
+            <column name="name" value="Goofy the Dog"/>
+            <column name="email" value="gd@mail.com"/>
+            <column name="rating" valueNumeric="0"/>
+        </insert>
         <insert tableName="loan">
             <column name="amount" valueNumeric="100"/>
             <column name="loan_status" value="0"/>
             <column name="client_id" valueNumeric="1"/>
+            <column name="manager_id" valueNumeric="1"/>
+        </insert>
+        <insert tableName="loan">
+            <column name="amount" valueNumeric="1000"/>
+            <column name="loan_status" value="0"/>
+            <column name="client_id" valueNumeric="2"/>
+            <column name="manager_id" valueNumeric="1"/>
+        </insert>
+        <insert tableName="loan">
+            <column name="amount" valueNumeric="2000"/>
+            <column name="loan_status" value="2"/>
+            <column name="client_id" valueNumeric="2"/>
+            <column name="manager_id" valueNumeric="1"/>
+        </insert>
+        <insert tableName="loan">
+            <column name="amount" valueNumeric="123"/>
+            <column name="loan_status" value="0"/>
+            <column name="client_id" valueNumeric="3"/>
+            <column name="manager_id" valueNumeric="1"/>
+        </insert>
+        <insert tableName="loan">
+            <column name="amount" valueNumeric="345"/>
+            <column name="loan_status" value="1"/>
+            <column name="client_id" valueNumeric="3"/>
             <column name="manager_id" valueNumeric="1"/>
         </insert>
     </changeSet>
