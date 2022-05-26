@@ -4,7 +4,7 @@ import com.haulmont.loans.loan.entities.Loan;
 import com.haulmont.loans.loan.repositories.LoanRepository;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
+import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -22,8 +22,8 @@ public class LoanService {
     private String getAuthUsername() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication != null) {
-            OAuth2AuthenticationToken token = (OAuth2AuthenticationToken) authentication;
-            return token.getPrincipal().getAttribute("preferred_username");
+            JwtAuthenticationToken token = ((JwtAuthenticationToken) authentication);
+            return (String)token.getToken().getClaims().get("preferred_username");
         } else {
             return "";
         }
