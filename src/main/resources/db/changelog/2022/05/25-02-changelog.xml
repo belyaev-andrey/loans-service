@@ -9,12 +9,12 @@
         <insert tableName="manager">
             <column name="name" value="John Black"/>
             <column name="salary" valueNumeric="1000"/>
-            <column name="username" value="admin"/>
+            <column name="username" value="221e31ab-36ef-4ee2-8080-5d2df7ddf193"/>
         </insert>
         <insert tableName="manager">
             <column name="name" value="Sarah White"/>
             <column name="salary" valueNumeric="1200"/>
-            <column name="username" value="user"/>
+            <column name="username" value="b5ad9459-e06d-4863-be4f-905c729e7217"/>
         </insert>
         <insert tableName="client">
             <column name="name" value="Donald Duck"/>
