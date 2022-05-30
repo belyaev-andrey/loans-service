@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.9.xsd">
+        <changeSet id="dsffsdf" author="abelyaev" context="test">
+            <loadData tableName="manager" file="db/loansdb_public_manager.csv"/>
+            <loadData tableName="client" file="db/loansdb_public_client.csv"/>
+            <loadData tableName="loan" file="db/loansdb_public_loan.csv"/>
+        </changeSet>
+</databaseChangeLog>
