@@ -21,8 +21,7 @@ public class LoanService {
 
     private String getAuthUsername() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if (authentication != null) {
-            JwtAuthenticationToken token = ((JwtAuthenticationToken) authentication);
+        if (authentication instanceof JwtAuthenticationToken token) {
             return (String)token.getToken().getClaims().get("preferred_username");
         } else {
             return "";
